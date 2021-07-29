@@ -1,0 +1,9 @@
+{
+	"name": "csdatafactoryunit",
+	"location": "uksouth",
+	"identity": {
+		"type": "SystemAssigned",
+		"principalId": "054abe55-c01c-4f38-be77-347d995a1211",
+		"tenantId": "8d1c8635-de2d-4e62-8cce-2fb54114972a"
+	}
+}
