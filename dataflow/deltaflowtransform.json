@@ -1,0 +1,27 @@
+{
+	"name": "deltaflowtransform",
+	"properties": {
+		"type": "MappingDataFlow",
+		"typeProperties": {
+			"sources": [
+				{
+					"dataset": {
+						"referenceName": "csvtodelta",
+						"type": "DatasetReference"
+					},
+					"name": "MoviesCSV"
+				}
+			],
+			"sinks": [],
+			"transformations": [
+				{
+					"name": "simpletransform"
+				},
+				{
+					"name": "Filter1"
+				}
+			],
+			"script": "source(output(\n\t\tmovie as string,\n\t\ttitle as string,\n\t\tgenres as string,\n\t\tyear as string,\n\t\tRating as string,\n\t\t{Rotton Tomato} as string\n\t),\n\tallowSchemaDrift: true,\n\tvalidateSchema: false,\n\tignoreNoFilesFound: false) ~> MoviesCSV\nMoviesCSV select(mapColumn(\n\t\tmovie,\n\t\ttitle,\n\t\tgenres,\n\t\tyear,\n\t\tRating,\n\t\tRottenTomato = {Rotton Tomato}\n\t),\n\tskipDuplicateMapInputs: true,\n\tskipDuplicateMapOutputs: true) ~> simpletransform\nsimpletransform filter(year == '1950' || year == '1960' || year == '1988') ~> Filter1"
+		}
+	}
+}
