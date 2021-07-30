@@ -16,7 +16,7 @@
 				"userProperties": [],
 				"typeProperties": {
 					"dataflow": {
-						"referenceName": "deltaflowtransform",
+						"referenceName": "deltaflowtransform_copy1",
 						"type": "DataFlowReference"
 					},
 					"compute": {
